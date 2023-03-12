@@ -50,15 +50,28 @@ body {
     font-weight: 700;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .accordion__title {
     font-size: 1rem;
+    margin-right: auto;
 }
 
-.accordion__icon::before {
-    content: "+";
+.accordion__icons {
+    display: flex;
+    width: 1rem;
+    overflow: hidden;
+}
+
+.accordion__icon {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.accordion__icon--del {
+    width: 0;
+    visibility: hidden;
+    opacity: 0;
 }
 
 .accordion__body {
@@ -74,31 +87,6 @@ body {
     color: #111;
 }
 
-@media (hover: hover) {
-    .accordion__icon {
-        visibility: hidden;
-        font-size: 1.2rem;
-        line-height: 1;
-    }
-
-    .accordion:hover .accordion__icon {
-        visibility: visible;
-        transition: visibility 0.2s;
-    }
-
-    .accordion__label:hover > .accordion__body {
-        margin: 1rem 0 0.5rem;
-        visibility: visible;
-        opacity: 1;
-        height: 100%;
-        transition: all 0.2s;
-    }
-
-    .accordion__label:hover > .accordion__icon::before {
-        content: "×";
-    }
-}
-
 .accordion__input:checked ~ .accordion__label > .accordion__body {
     margin: 1rem 0 0.5rem;
     visibility: visible;
@@ -107,8 +95,17 @@ body {
     transition: all 0.2s;
 }
 
-.accordion__input:checked ~ .accordion__label .accordion__icon::before {
-    content: "×";
+.accordion__input:checked ~ .accordion__label .accordion__icon--del {
+    width: auto;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.2s;
+}
+
+.accordion__input:checked ~ .accordion__label .accordion__icon--add {
+    width: 0;
+    visibility: hidden;
+    opacity: 0;
 }
 
 .accordion__input:active ~ .accordion__label > .accordion__heading {
@@ -123,6 +120,55 @@ body {
 
 .accordion__body img {
     max-width: 80vw;
+}
+
+@media (hover: hover) {
+    .accordion__input:checked ~ .accordion__label .accordion__icon--del {
+        width: 0;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .accordion__input:not(:checked) ~ .accordion__label .accordion__icon--add {
+        width: 0;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .accordion:hover .accordion__input:checked ~ .accordion__label .accordion__icon--del {
+        width: auto;
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.2s;
+    }
+
+    .accordion:hover .accordion__input:not(:checked) ~ .accordion__label .accordion__icon--add {
+        width: auto;
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.2s;
+    }
+
+    .accordion__label:hover > .accordion__body {
+        margin: 1rem 0 0.5rem;
+        visibility: visible;
+        opacity: 1;
+        height: 100%;
+        transition: all 0.2s;
+    }
+
+    .accordion:hover .accordion__item:hover .accordion__input ~ .accordion__label .accordion__icon--del {
+        width: auto;
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.2s;
+    }
+
+    .accordion:hover .accordion__item:hover .accordion__input ~ .accordion__label .accordion__icon--add {
+        width: 0;
+        visibility: hidden;
+        opacity: 0;
+    }
 }
 
 @media (min-width: 576px) {
