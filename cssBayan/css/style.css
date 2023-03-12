@@ -15,7 +15,7 @@ body {
 }
 
 .title {
-    font-size: 2rem;
+    font-size: 1.2rem;
     font-weight: 700;
     line-height: 1.2;
     margin: 0 0 1rem;
@@ -23,6 +23,13 @@ body {
 
 .accordion {
     margin: 1.5rem 0;
+    color: #005eff;
+}
+
+@media (hover: hover) {
+    .accordion:hover {
+        color: #111;
+    }
 }
 
 .accordion__item {
@@ -41,18 +48,13 @@ body {
 
 .accordion__heading {
     font-weight: 700;
-    color: #005eff;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .accordion__title {
-    font-size: 1.125rem;
-}
-
-.accordion__icon {
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 .accordion__icon::before {
@@ -68,18 +70,115 @@ body {
     opacity: 0;
 }
 
+.accordion__input:checked ~ .accordion__label .accordion__heading {
+    color: #111;
+}
+
+@media (hover: hover) {
+    .accordion__icon {
+        visibility: hidden;
+        font-size: 1.2rem;
+        line-height: 1;
+    }
+
+    .accordion:hover .accordion__icon {
+        visibility: visible;
+        transition: visibility 0.2s;
+    }
+
+    .accordion__label:hover > .accordion__body {
+        margin: 1rem 0 0.5rem;
+        visibility: visible;
+        opacity: 1;
+        height: 100%;
+        transition: all 0.2s;
+    }
+
+    .accordion__label:hover > .accordion__icon::before {
+        content: "×";
+    }
+}
+
 .accordion__input:checked ~ .accordion__label > .accordion__body {
     margin: 1rem 0 0.5rem;
     visibility: visible;
     opacity: 1;
     height: 100%;
-    transition: all 0.3s;
+    transition: all 0.2s;
 }
 
 .accordion__input:checked ~ .accordion__label .accordion__icon::before {
     content: "×";
 }
 
+.accordion__input:active ~ .accordion__label > .accordion__heading {
+    color: #005eff;
+    transition: color 0.2s;
+}
+
+.accordion__input:active ~ .accordion__label {
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
 .accordion__body img {
-    max-width: 30vw;
+    max-width: 80vw;
+}
+
+@media (min-width: 576px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .accordion__title {
+        font-size: 1.125rem;
+    }
+
+    .accordion__icon {
+        font-size: 1.35rem;
+    }
+
+    .accordion__body img {
+        max-width: 50vw;
+    }
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .accordion__title {
+        font-size: 1.2rem;
+    }
+
+    .accordion__icon {
+        font-size: 1.5rem;
+    }
+
+    .accordion__body img {
+        max-width: 40vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .accordion__title {
+        font-size: 1.5rem;
+    }
+
+    .accordion__icon {
+        font-size: 1.75rem;
+    }
+
+    .accordion__body img {
+        max-width: 30vw;
+    }
 }
