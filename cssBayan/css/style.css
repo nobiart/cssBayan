@@ -44,6 +44,7 @@ body {
     display: block;
     cursor: pointer;
     padding: 1rem 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .accordion__heading {
@@ -78,9 +79,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 0;
-    visibility: hidden;
-    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s;
 }
 
 .accordion__input:checked ~ .accordion__label .accordion__heading {
@@ -89,17 +90,14 @@ body {
 
 .accordion__input:checked ~ .accordion__label > .accordion__body {
     margin: 1rem 0 0.5rem;
-    visibility: visible;
-    opacity: 1;
-    height: 100%;
-    transition: all 0.2s;
+    max-height: 30rem;
 }
 
 .accordion__input:checked ~ .accordion__label .accordion__icon--del {
     width: auto;
     visibility: visible;
     opacity: 1;
-    transition: all 0.2s;
+    transition: all 0.5s;
 }
 
 .accordion__input:checked ~ .accordion__label .accordion__icon--add {
@@ -110,16 +108,18 @@ body {
 
 .accordion__input:active ~ .accordion__label > .accordion__heading {
     color: #005eff;
-    transition: color 0.2s;
+    transition: color 0.5s;
 }
 
 .accordion__input:active ~ .accordion__label {
     opacity: 0.8;
-    transition: opacity 0.2s;
+    transition: opacity 0.5s;
 }
 
 .accordion__body img {
     max-width: 80vw;
+    max-height: 100%;
+    margin: 1rem auto 0.5rem;
 }
 
 @media (hover: hover) {
@@ -139,29 +139,25 @@ body {
         width: auto;
         visibility: visible;
         opacity: 1;
-        transition: all 0.2s;
+        transition: all 0.5s;
     }
 
     .accordion:hover .accordion__input:not(:checked) ~ .accordion__label .accordion__icon--add {
         width: auto;
         visibility: visible;
         opacity: 1;
-        transition: all 0.2s;
+        transition: all 0.5s;
     }
 
     .accordion__label:hover > .accordion__body {
-        margin: 1rem 0 0.5rem;
-        visibility: visible;
-        opacity: 1;
-        height: 100%;
-        transition: all 0.2s;
+        max-height: 30rem;
     }
 
     .accordion:hover .accordion__item:hover .accordion__input ~ .accordion__label .accordion__icon--del {
         width: auto;
         visibility: visible;
         opacity: 1;
-        transition: all 0.2s;
+        transition: all 0.5s;
     }
 
     .accordion:hover .accordion__item:hover .accordion__input ~ .accordion__label .accordion__icon--add {
