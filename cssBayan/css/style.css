@@ -1,0 +1,226 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Open Sans', Verdana, sans-serif;
+    font-size: 1rem;
+    color: #111;
+}
+
+.container {
+    max-width: 96vw;
+    padding: 0 1rem;
+    margin: 2rem auto;
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 1rem;
+}
+
+.accordion {
+    margin: 1.5rem 0;
+    color: #005eff;
+}
+
+@media (hover: hover) {
+    .accordion:hover {
+        color: #111;
+    }
+}
+
+.accordion__item {
+    border-top: 1px solid #ccc;
+}
+
+.accordion__input {
+    display: none;
+}
+
+.accordion__label {
+    display: block;
+    cursor: pointer;
+    padding: 1rem 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.accordion__heading {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.accordion__title {
+    font-size: 1rem;
+    margin-right: auto;
+}
+
+.accordion__icons {
+    display: flex;
+    width: 1rem;
+    overflow: hidden;
+}
+
+.accordion__icon {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.accordion__icon--del {
+    width: 0;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.accordion__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+
+.accordion__input:checked ~ .accordion__label .accordion__heading {
+    color: #111;
+}
+
+.accordion__input:checked ~ .accordion__label > .accordion__body {
+    margin: 1rem 0 0.5rem;
+    max-height: 30rem;
+}
+
+.accordion__input:checked ~ .accordion__label .accordion__icon--del {
+    width: auto;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+.accordion__input:checked ~ .accordion__label .accordion__icon--add {
+    width: 0;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.accordion__input:active ~ .accordion__label > .accordion__heading {
+    color: #005eff;
+    transition: color 0.5s;
+}
+
+.accordion__input:active ~ .accordion__label {
+    opacity: 0.8;
+    transition: opacity 0.5s;
+}
+
+.accordion__body img {
+    max-width: 80vw;
+    max-height: 100%;
+    margin: 1rem auto 0.5rem;
+}
+
+@media (hover: hover) {
+    .accordion__input:checked ~ .accordion__label .accordion__icon--del {
+        width: 0;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .accordion__input:not(:checked) ~ .accordion__label .accordion__icon--add {
+        width: 0;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .accordion:hover .accordion__input:checked ~ .accordion__label .accordion__icon--del {
+        width: auto;
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.5s;
+    }
+
+    .accordion:hover .accordion__input:not(:checked) ~ .accordion__label .accordion__icon--add {
+        width: auto;
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.5s;
+    }
+
+    .accordion__label:hover > .accordion__body {
+        max-height: 30rem;
+    }
+
+    .accordion:hover .accordion__item:hover .accordion__input ~ .accordion__label .accordion__icon--del {
+        width: auto;
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.5s;
+    }
+
+    .accordion:hover .accordion__item:hover .accordion__input ~ .accordion__label .accordion__icon--add {
+        width: 0;
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+@media (min-width: 576px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .accordion__title {
+        font-size: 1.125rem;
+    }
+
+    .accordion__icon {
+        font-size: 1.35rem;
+    }
+
+    .accordion__body img {
+        max-width: 50vw;
+    }
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .accordion__title {
+        font-size: 1.2rem;
+    }
+
+    .accordion__icon {
+        font-size: 1.5rem;
+    }
+
+    .accordion__body img {
+        max-width: 40vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .accordion__title {
+        font-size: 1.5rem;
+    }
+
+    .accordion__icon {
+        font-size: 1.75rem;
+    }
+
+    .accordion__body img {
+        max-width: 30vw;
+    }
+}
